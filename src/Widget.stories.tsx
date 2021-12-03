@@ -16,7 +16,8 @@ const handleNewUserMessage = (newMessage: any) => {
         if (newMessage === 'fruits') {
             setQuickButtons([{ label: 'Apple', value: 'apple' }, { label: 'Orange', value: 'orange' }, { label: 'Pear', value: 'pear' }, { label: 'Banana', value: 'banana' }]);
         } else {
-            addResponseMessageWithSender("Test Sender", newMessage);
+            const now = new Date();
+            addResponseMessageWithSender("Test Sender", newMessage, new Date(2021, 11, 21, now.getHours() - 1, 1));
         }
     }, 2000);
 }

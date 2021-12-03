@@ -18,12 +18,14 @@ interface AddNewUserMessageProps {
   text: string;
   showClientAvatar: boolean;
   id: string;
+  timestamp?: Date;
 }
 
 interface AddNewResponseMessageProps {
   text: string;
   id: string;
   sender?: string;
+  timestamp?: Date;
 }
 
 interface AddNewLinkSnippetProps {
@@ -53,10 +55,10 @@ interface SetBadgeCountProps {
 
 const messagesReducer = {
   [ADD_NEW_USER_MESSAGE]: (state: MessagesState, props: AddNewUserMessageProps) =>
-    ({ ...state, messages: [...state.messages, createNewMessage(props.text, MessageOrigin.client, props.id)] }),
+    ({ ...state, messages: [...state.messages, createNewMessage(props.text, MessageOrigin.client, props.id, undefined, props.timestamp)] }),
 
   [ADD_NEW_RESPONSE_MESSAGE]: (state: MessagesState, props: AddNewResponseMessageProps) =>
-    ({ ...state, messages: [...state.messages, createNewMessage(props.text, MessageOrigin.response, props.id, props.sender)], badgeCount: state.badgeCount + 1 }),
+    ({ ...state, messages: [...state.messages, createNewMessage(props.text, MessageOrigin.response, props.id, props.sender, props.timestamp)], badgeCount: state.badgeCount + 1 }),
 
   [ADD_NEW_LINK_SNIPPET]: (state: MessagesState, props: AddNewLinkSnippetProps) =>
     ({ ...state, messages: [...state.messages, createLinkSnippet(props.link, props.id)] }),
