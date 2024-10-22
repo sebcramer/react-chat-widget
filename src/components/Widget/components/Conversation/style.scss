@@ -1,11 +1,10 @@
-@import "common";
-@import "variables/colors";
-@import "animation";
-@import "~emoji-mart/css/emoji-mart.css";
+@use "common";
+@use "variables/colors";
+@use "animation";
 
 .rcw-conversation-container {
   border-radius: 10px;
-  box-shadow: 0px 2px 10px 1px $grey-3;
+  box-shadow: 0px 2px 10px 1px colors.$grey-3;
   min-width: 370px;
   max-width: 90vw;
   position: relative;
@@ -40,12 +39,12 @@
 
 .rcw-full-screen {
   .rcw-conversation-container {
-    @include conversation-container-fs;
+    @include common.conversation-container-fs;
   }
 }
 
 @media screen and (max-width: 800px) {
   .rcw-conversation-container {
-    @include conversation-container-fs;
+    @include common.conversation-container-fs;
   }
 }

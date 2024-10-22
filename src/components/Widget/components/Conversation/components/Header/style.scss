@@ -1,12 +1,12 @@
-@import 'variables/colors';
-@import 'common';
+@use 'variables/colors';
+@use 'common';
 
 .rcw-conversation-container {
 
   .rcw-header {
-    background-color: $turqois-1;
+    background-color: colors.$turqois-1;
     border-radius: 10px 10px 0 0;
-    color: $white;
+    color: colors.$white;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -35,19 +35,19 @@
 .rcw-full-screen {
 
   .rcw-header {
-    @include header-fs;
+    @include common.header-fs;
   }
 
   .rcw-title {
-    @include title-fs;
+    @include common.title-fs;
   }
 
   .rcw-close-button {
-    @include close-button-fs;
+    @include common.close-button-fs;
   }
 
   .rcw-close {
-    @include close-fs;
+    @include common.close-fs;
   }
 }
 
@@ -56,19 +56,19 @@
   .rcw-conversation-container {
 
     .rcw-header {
-      @include header-fs;
+      @include common.header-fs;
     }
 
     .rcw-title {
-      @include title-fs;
+      @include common.title-fs;
     }
 
     .rcw-close-button {
-      @include close-button-fs;
+      @include common.close-button-fs;
     }
 
     .rcw-close {
-      @include close-fs;
+      @include common.close-fs;
     }
   }
 }

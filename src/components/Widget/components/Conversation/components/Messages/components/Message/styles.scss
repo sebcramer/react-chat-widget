@@ -1,5 +1,5 @@
-@import "variables/colors";
-@import "common";
+@use "variables/colors";
+@use "common";
 
 .rcw-message {
   margin: 10px;
@@ -23,7 +23,7 @@
   margin-left: auto;
 
   .rcw-message-text {
-    @include message-bubble($turqois-2);
+    @include common.message-bubble(colors.$turqois-2);
 
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -44,7 +44,7 @@
   }
 
   .rcw-message-text {
-    @include message-bubble($grey-2);
+    @include common.message-bubble(colors.$grey-2);
   }
 }
 

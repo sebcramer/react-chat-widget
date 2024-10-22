@@ -1,4 +1,4 @@
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MessageOrigin } from '../../../../../../constants';

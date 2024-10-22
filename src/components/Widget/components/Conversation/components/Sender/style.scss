@@ -1,8 +1,8 @@
-@import 'variables/colors';
+@use 'variables/colors';
 
 .rcw-sender {
   align-items: flex-end;
-  background-color: $grey-2;
+  background-color: colors.$grey-2;
   border-radius: 0 0 10px 10px;
   display: flex;
   height: max-content;
@@ -18,7 +18,7 @@
 }
 
 .rcw-new-message {
-  background-color: $white;
+  background-color: colors.$white;
   border: 0;
   border-radius: 5px;
   padding: 10px 5px;
@@ -50,12 +50,12 @@
 
   &[placeholder]:empty::before {
     content: attr(placeholder);
-    color: $grey-0; 
+    color: colors.$grey-0; 
   }
 }
 
 .rcw-send, .rcw-picker-btn {
-  background: $grey-2;
+  background: colors.$grey-2;
   border: 0;
   cursor: pointer;
 
@@ -65,7 +65,7 @@
 }
 
 .rcw-message-disable {
-  background-color: $grey-2;
+  background-color: colors.$grey-2;
   cursor: not-allowed;
 }
 

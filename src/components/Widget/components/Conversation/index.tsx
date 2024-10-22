@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-import { EmojiData, Picker } from 'emoji-mart';
+import data, { EmojiMartData } from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 import cn from 'classnames';
 
 import Header from './components/Header';
@@ -13,7 +14,7 @@ import './style.scss';
 import React from 'react';
 
 interface ISenderRef {
-  onSelectEmoji: (event: any) => void;
+  onSelectEmoji: (event: EmojiMartData) => void;
 }
 
 type Props = {
@@ -94,7 +95,7 @@ function Conversation({
   const senderRef = useRef<ISenderRef>(null!);
   const [pickerStatus, setPicket] = useState(false)
 
-  const onSelectEmoji = (emoji: EmojiData) => {
+  const onSelectEmoji = (emoji: EmojiMartData) => {
     senderRef.current?.onSelectEmoji(emoji);
   }
 
@@ -127,10 +128,12 @@ function Conversation({
         timestampFormat={timestampFormat}
       />
       <QuickButtons onQuickButtonClicked={onQuickButtonClicked} />
-      {emojis && pickerStatus && (<Picker
-        style={{ position: 'absolute', bottom: pickerOffset, left: '0', width: '100%' }}
-        onSelect={onSelectEmoji}
-      />)}
+      {emojis && pickerStatus && (
+        <Picker
+          style={{ position: 'absolute', bottom: pickerOffset, left: '0', width: '100%' }}
+          data={data}
+          onSelect={onSelectEmoji}
+        />)}
       <Sender
         ref={senderRef}
         sendMessage={handlerSendMsn}

@@ -1,8 +1,8 @@
-@import 'variables/colors';
-@import 'common';
+@use 'variables/colors';
+@use 'common';
 
 .rcw-messages-container {
-  background-color: $white;
+  background-color: colors.$white;
   height: 50vh;
   max-height: 410px;
   overflow-y: scroll;
@@ -13,12 +13,12 @@
 .rcw-full-screen {
 
   .rcw-messages-container {
-    @include messages-container-fs;
+    @include common.messages-container-fs;
   }
 }
 
 @media screen and (max-width: 800px)  {
   .rcw-messages-container {
-    @include messages-container-fs;
+    @include common.messages-container-fs;
   }
 }

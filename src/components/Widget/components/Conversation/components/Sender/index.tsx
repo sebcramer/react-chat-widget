@@ -144,7 +144,7 @@ function Sender({ sendMessage, placeholder, disabledInput, autofocus, onTextInpu
           role="textbox"
           contentEditable={!disabledInput}
           ref={inputRef}
-          placeholder={placeholder}
+          aria-placeholder={placeholder}
           onInput={handlerOnChange}
           onKeyPress={handlerOnKeyPress}
           onKeyUp={handlerOnKeyUp}
