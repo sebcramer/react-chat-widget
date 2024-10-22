@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "declarationDir": "lib",
+        "declarationDir": "types",
         "module": "esnext",
         "target": "es6",
         "lib": [
@@ -14,7 +14,8 @@
         "jsx": "react",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "outDir": "lib",
     },
     "include": [
         "src/**/*"

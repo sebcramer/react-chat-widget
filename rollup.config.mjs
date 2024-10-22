@@ -1,16 +1,22 @@
 import commonjs from "@rollup/plugin-commonjs";
 import image from '@rollup/plugin-image';
 import resolve from "@rollup/plugin-node-resolve";
+import { dts } from "rollup-plugin-dts";
+import terser from '@rollup/plugin-terser';
 import path from "path";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
-import { terser } from "rollup-plugin-terser";
-import typescript from "rollup-plugin-typescript2";
+import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import { fileURLToPath } from 'url';
+import packageJson from "./package.json" assert { type: "json" };
 
-const packageJson = require("./package.json");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-export default {
+
+
+export default [{
     input: "src/index.tsx",
     output: [
         {
@@ -25,11 +31,10 @@ export default {
         }
     ],
     plugins: [
-        peerDepsExternal({ includeDependencies: true }),
+        peerDepsExternal(),
         resolve(),
         commonjs(),
-        typescript({ useTsconfigDeclarationDir: true, abortOnError: true, check: true, clean: true }),
-        terser(),
+        typescript({ tsconfig: "./tsconfig.json" }),
         image(),
         json({
             compact: true
@@ -43,6 +48,14 @@ export default {
             extract: "styles.css",
             sourceMap: true,
             minimize: true
-        })
+        }),
+        terser()
     ]
-};
+},
+{
+    input: "lib/esm/types/index.d.ts",
+    output: [{ file: "lib/index.d.ts", format: "esm" }],
+    plugins: [dts()],
+    external: [/\.(css|less|scss)$/],
+},
+];
